@@ -1,0 +1,992 @@
+/* src/App.css */
+
+.app-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #0f172a; /* Slate 900 */
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.025em;
+  background: linear-gradient(135deg, #0f172a 0%, #0d9488 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  color: #64748b; /* Slate 500 */
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+/* Control Panel */
+.controls-card {
+  background: white;
+  padding: 1.25rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  border: 1px solid #e2e8f0;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Toast Notifications */
+.toast-container {
+  position: fixed;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  pointer-events: none;
+}
+
+.toast {
+  background-color: #0f172a;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  pointer-events: auto;
+  animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Button styling */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: white;
+  font-family: inherit;
+}
+
+.btn-primary {
+  background-color: #0d9488; /* Teal 600 */
+}
+.btn-primary:hover {
+  background-color: #0f766e; /* Teal 700 */
+  box-shadow: 0 4px 6px -1px rgba(13, 148, 136, 0.2);
+}
+
+.btn-secondary {
+  background-color: #4f46e5; /* Indigo 600 */
+}
+.btn-secondary:hover {
+  background-color: #4338ca; /* Indigo 700 */
+  box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);
+}
+
+.btn-pdf {
+  background-color: #e11d48; /* Rose 600 */
+}
+.btn-pdf:hover {
+  background-color: #be123c; /* Rose 700 */
+  box-shadow: 0 4px 6px -1px rgba(225, 29, 72, 0.2);
+}
+
+.btn-image {
+  background-color: #d97706; /* Amber 600 */
+}
+.btn-image:hover {
+  background-color: #b45309; /* Amber 700 */
+  box-shadow: 0 4px 6px -1px rgba(217, 119, 6, 0.2);
+}
+
+.btn-share {
+  background-color: #7c3aed; /* Violet 600 */
+}
+.btn-share:hover {
+  background-color: #6d28d9; /* Violet 700 */
+  box-shadow: 0 4px 6px -1px rgba(124, 58, 237, 0.2);
+}
+
+.btn-danger {
+  background-color: #ef4444; /* Red 500 */
+}
+.btn-danger:hover {
+  background-color: #dc2626; /* Red 600 */
+  box-shadow: 0 4px 6px -1px rgba(239, 68, 68, 0.2);
+}
+
+/* Table Card Container */
+.table-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.register-table {
+  width: 100%;
+  min-width: 1200px;
+  border-collapse: collapse;
+  table-layout: fixed; /* Crucial to enforce column widths! */
+}
+
+/* Define widths exactly as requested:
+   Column 1: 8%
+   Column 2: 11%
+   Column mytime: 11%
+   Column 3: 11%
+   Column 4: 11%
+   Column 5: 15%
+   Column 6: 15%
+   Column 7: 11%
+   Column 8: 7%
+*/
+.col-1 { width: 12%; }
+.col-2 { width: 11%; }
+.col-mytime { width: 11%; }
+.col-3 { width: 11%; }
+.col-4 { width: 11%; }
+.col-5 { width: 13%; }
+.col-6 { width: 13%; }
+.col-7 { width: 11%; }
+.col-8 { width: 7%; }
+
+.register-table th {
+  background-color: #f8fafc;
+  border-bottom: 2px solid #cbd5e1;
+  border-right: 1px solid #e2e8f0;
+  padding: 1rem 0.5rem;
+  color: #334155;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+  vertical-align: middle;
+  word-wrap: break-word;
+}
+
+.register-table th:last-child {
+  border-right: none;
+}
+
+.register-table td {
+  border-bottom: 1px solid #e2e8f0;
+  border-right: 1px solid #e2e8f0;
+  padding: 0; /* Padding handled by inputs inside for full cell click */
+  vertical-align: top;
+  position: relative;
+  transition: background-color 0.15s ease;
+}
+
+.register-table td:last-child {
+  border-right: none;
+}
+
+.register-table tr:hover td {
+  background-color: #f8fafc;
+}
+
+/* Column 1 Specific Layout (Day / Date) */
+.date-cell-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0.75rem 0.35rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.date-input {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 0.35rem 0.2rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: #1e293b;
+  background-color: white;
+  text-align: center;
+  transition: all 0.15s ease;
+}
+
+.date-input:focus {
+  outline: none;
+  border-color: #0d9488;
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
+}
+
+.btn-row-delete {
+  background: none;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+  padding: 0.35rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  opacity: 0.3;
+}
+
+.register-table tr:hover .btn-row-delete {
+  opacity: 1;
+}
+
+.btn-row-delete:hover {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+/* Cell Inputs */
+.cell-textarea {
+  width: 100%;
+  height: 100%;
+  min-height: 90px;
+  border: none;
+  padding: 0.75rem 0.625rem;
+  resize: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: #334155;
+  background-color: transparent;
+  line-height: 1.5;
+  display: block;
+  transition: all 0.15s ease;
+}
+
+.cell-textarea:focus {
+  outline: none;
+  background-color: white;
+  box-shadow: inset 0 2px 4px 0 rgba(0,0,0,0.04), 0 0 0 2px rgba(13, 148, 136, 0.15);
+}
+
+/* Footer note */
+.footer-note {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+/* Capture helper style during image/pdf capture - forces desk width on mobile */
+.capture-mode {
+  width: 1200px !important;
+  max-width: none !important;
+}
+
+/* Include user's requested Print CSS */
+@media print {
+  body {
+    width: 1200px !important;
+    min-width: 1200px !important;
+  }
+  .app-container {
+    width: 1200px !important;
+    min-width: 1200px !important;
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .table-card, .register-card {
+    width: 1200px !important;
+    min-width: 1200px !important;
+    max-width: none !important;
+  }
+  .table-wrapper {
+    width: 1200px !important;
+    min-width: 1200px !important;
+    overflow: visible !important;
+  }
+  table {
+    width: 1200px !important;
+    min-width: 1200px !important;
+  }
+
+  .diary-meta-bar, .absentees-meta-bar {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 10px 15px !important;
+    margin-bottom: 5px !important;
+    background: transparent !important;
+    border-bottom: 2px solid #000 !important;
+  }
+  .diary-std-container {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    font-weight: bold !important;
+    font-size: 11pt !important;
+    color: black !important;
+  }
+  .diary-form-title, .absentees-form-title {
+    font-size: 12pt !important;
+    font-weight: bold !important;
+    color: black !important;
+    text-transform: uppercase !important;
+  }
+  .absentees-date-container {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    font-weight: bold !important;
+    font-size: 10pt !important;
+    color: black !important;
+  }
+
+  @page {
+    size: A4 landscape;
+    margin: 10mm;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .app-container {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .table-card {
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+  }
+  
+  .table-wrapper {
+    overflow: visible !important;
+  }
+
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    table-layout: fixed !important;
+  }
+
+  tr {
+    page-break-inside: avoid !important;
+  }
+
+  th, td {
+    border: 1px solid #000 !important;
+    padding: 0 !important;
+  }
+  
+  th {
+    background-color: #f1f5f9 !important;
+    color: black !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    font-size: 9pt !important;
+    padding: 4px 2px !important;
+  }
+
+  .date-cell-container {
+    padding: 4px !important;
+  }
+
+  .date-input {
+    border: none !important;
+    padding: 0 !important;
+    font-size: 8pt !important;
+    background: transparent !important;
+    text-align: center;
+  }
+
+  .btn-row-delete {
+    display: none !important;
+  }
+
+  .cell-textarea {
+    border: none !important;
+    resize: none !important;
+    outline: none !important;
+    background: transparent !important;
+    width: 100% !important;
+    overflow: visible !important;
+    font-size: 8pt !important;
+    padding: 4px !important;
+    min-height: auto !important;
+  }
+
+  .signature-section {
+    display: flex !important;
+    justify-content: space-between !important;
+    margin-top: 80px !important;
+    padding: 0 10mm 5mm 10mm !important;
+    page-break-inside: avoid !important;
+  }
+
+  .sig-block {
+    font-size: 9.5pt !important;
+    font-weight: bold !important;
+    color: black !important;
+  }
+
+  .sig-line {
+    margin-top: 2.5rem !important;
+  }
+
+  .weekly-remark-textarea, .weekly-general-textarea {
+    border: none !important;
+    padding: 0 !important;
+    font-size: 8.5pt !important;
+    background: transparent !important;
+    resize: none !important;
+    min-height: auto !important;
+  }
+
+  .weekly-section-title {
+    background-color: #f1f5f9 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    border-top: 1px solid #000 !important;
+    border-bottom: 2px solid #000 !important;
+    font-size: 10pt !important;
+    padding: 4px 8px !important;
+    margin-top: 8px !important;
+  }
+
+  .auto-summary-content {
+    background-color: #f8fafc !important;
+    border: 1px solid #ccc !important;
+    font-size: 8pt !important;
+    padding: 4px !important;
+    max-height: none !important;
+  }
+
+  .weekly-summaries-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    border-bottom: 1px solid #000 !important;
+  }
+
+  .weekly-subject-box {
+    border-right: 1px solid #000 !important;
+    border-bottom: 1px solid #000 !important;
+    page-break-inside: avoid !important;
+  }
+
+  .weekly-subject-box:nth-child(2n) {
+    border-right: none !important;
+  }
+
+  .subject-box-header {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    font-size: 9pt !important;
+    padding: 4px 8px !important;
+  }
+
+  .weekly-general-remarks {
+    padding: 8px 12px !important;
+    page-break-inside: avoid !important;
+  }
+
+  .page-break-before-print {
+    page-break-before: always !important;
+  }
+
+  
+}
+
+/* ==========================================================================
+   Screen Styles for Weekly Summaries & Meta Bar
+   ========================================================================== */
+
+/* Tab Navigation */
+.tab-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1px solid #cbd5e1;
+  background-color: #f8fafc;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  background-color: #f1f5f9;
+  color: #334155;
+  border-color: #94a3b8;
+}
+
+.tab-btn.active {
+  background-color: #0f172a;
+  color: white;
+  border-color: #0f172a;
+  box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.15);
+}
+
+/* Top Meta Bar (Vidyachetana Diary styled title + Std input) */
+.diary-meta-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem 0.5rem 2rem;
+  font-family: inherit;
+}
+
+.diary-std-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  font-size: 1.1rem;
+}
+
+.diary-std-input {
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 0.4rem 0.75rem;
+  font-family: inherit;
+  font-size: 1rem;
+  color: #1e293b;
+  background-color: white;
+  outline: none;
+  width: 120px;
+  transition: all 0.15s ease;
+}
+
+.diary-std-input:focus {
+  border-color: #0d9488;
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
+}
+
+.diary-form-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.diary-week-display {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0d9488;
+}
+
+/* Week Selector dropdown */
+.week-select-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+.week-select-dropdown {
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1e293b;
+  background-color: white;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.week-select-dropdown:focus {
+  border-color: #0d9488;
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
+}
+
+/* Weekly Section headers */
+.weekly-section-title {
+  background-color: #f8fafc;
+  border-bottom: 2px solid #cbd5e1;
+  border-top: 1px solid #e2e8f0;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-top: 1.5rem;
+}
+
+.weekly-date-cell {
+  padding: 0.75rem 0.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #1e293b;
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Weekly grid & subject boxes */
+.weekly-summaries-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-bottom: 1px solid #cbd5e1;
+}
+
+.weekly-subject-box {
+  border-right: 1px solid #cbd5e1;
+  border-bottom: 1px solid #cbd5e1;
+  display: flex;
+  flex-direction: column;
+}
+
+.weekly-subject-box:nth-child(2n) {
+  border-right: none;
+}
+
+.subject-box-header {
+  padding: 0.6rem 1rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #cbd5e1;
+  color: white;
+}
+
+/* Theme classes for the 8 sections */
+.greetings-theme { background-color: #0f766e; }
+.mytime-theme { background-color: #6366f1; }
+.numerical-theme { background-color: #0284c7; }
+.creative-theme { background-color: #db2777; }
+.language-theme { background-color: #059669; }
+.outdoor-theme { background-color: #d97706; }
+.story-theme { background-color: #7c3aed; }
+.seeyou-theme { background-color: #475569; }
+
+.subject-box-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.auto-summary-label, .remarks-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.auto-summary-content {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 0.75rem;
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: #334155;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0;
+  max-height: 120px;
+  overflow-y: auto;
+  line-height: 1.5;
+}
+
+.weekly-remark-textarea {
+  width: 100%;
+  min-height: 80px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 0.5rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: #1e293b;
+  resize: none;
+  line-height: 1.5;
+  transition: all 0.15s ease;
+}
+
+.weekly-remark-textarea:focus {
+  outline: none;
+  border-color: #0d9488;
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
+}
+
+.weekly-general-remarks {
+  padding: 1.5rem;
+  border-bottom: 1px solid #cbd5e1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.weekly-general-textarea {
+  width: 100%;
+  min-height: 100px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 0.75rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: #1e293b;
+  resize: none;
+  line-height: 1.5;
+  transition: all 0.15s ease;
+}
+
+.weekly-general-textarea:focus {
+  outline: none;
+  border-color: #0d9488;
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
+}
+
+/* Bottom Signature Layout on screen */
+.signature-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 80px;
+  padding: 0 3rem 2.5rem 3rem;
+  font-family: inherit;
+}
+
+.sig-block {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1e293b;
+  line-height: 1.8;
+}
+
+.sig-line {
+  margin-top: 3.5rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+@media (max-width: 768px) {
+  .weekly-summaries-grid {
+    grid-template-columns: 1fr;
+  }
+  .weekly-subject-box {
+    border-right: none;
+  }
+}
+
+/* Screen defaults: hide all capture-print-only elements */
+.capture-print-only-block,
+.capture-print-only-inline {
+  display: none !important;
+}
+
+/* Capture mode and print mode overrides */
+@media print {
+  .no-capture-print {
+    display: none !important;
+  }
+  .capture-print-only-block {
+    display: block !important;
+  }
+  .capture-print-only-inline {
+    display: inline !important;
+  }
+  
+  /* Make sure table wrapper is visible and doesn't scroll */
+  .table-wrapper {
+    overflow: visible !important;
+  }
+}
+
+.capture-mode .no-capture-print,
+.capture-mode-abs .no-capture-print {
+  display: none !important;
+}
+.capture-mode .capture-print-only-block,
+.capture-mode-abs .capture-print-only-block {
+  display: block !important;
+}
+.capture-mode .capture-print-only-inline,
+.capture-mode-abs .capture-print-only-inline {
+  display: inline !important;
+}
+
+/* Styling the static text blocks to look EXACTLY like the inputs they replace */
+.cell-textarea-text {
+  width: 100%;
+  min-height: 90px;
+  padding: 0.75rem 0.625rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: #334155;
+  background-color: transparent;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+/* Ensure that cell-textarea-wrapper doesn't collapse */
+.cell-textarea-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.date-input-text {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 0.35rem 0.2rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: #1e293b;
+  background-color: white;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.weekly-remark-textarea-wrapper {
+  width: 100%;
+}
+
+.weekly-remark-textarea-text {
+  width: 100%;
+  min-height: 80px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 0.5rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: #1e293b;
+  background-color: white;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.weekly-general-textarea-wrapper {
+  width: 100%;
+}
+
+.weekly-general-textarea-text {
+  width: 100%;
+  min-height: 100px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 0.75rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: #1e293b;
+  background-color: white;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+/* Adjust font sizes under capture / print modes for readability */
+@media print {
+  .cell-textarea-text {
+    font-size: 10.5pt !important;
+    padding: 4px !important;
+    min-height: auto !important;
+  }
+  .date-input-text {
+    font-size: 10pt !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+  }
+  .weekly-remark-textarea-text {
+    font-size: 8.5pt !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    min-height: auto !important;
+  }
+  .weekly-general-textarea-text {
+    font-size: 8.5pt !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    min-height: auto !important;
+  }
+}
+
+.capture-mode .cell-textarea-text,
+.capture-mode-abs .cell-textarea-text {
+  font-size: 10.5pt !important;
+  padding: 6px !important;
+  /* During capture, keep the box-like height but allow it to expand if text overflows */
+  min-height: 90px !important;
+}
+
+.capture-mode .weekly-remark-textarea-text,
+.capture-mode-abs .weekly-remark-textarea-text {
+  font-size: 10pt !important;
+}
+
+.capture-mode .weekly-general-textarea-text,
+.capture-mode-abs .weekly-general-textarea-text {
+  font-size: 10pt !important;
+}
